@@ -13,19 +13,19 @@ function loadModule(filename, module, require) {
 }
 
 require = function (moduleName) {
-  const id = require.resolve(moduleName);
-  if (require.cache[id]) {
-    return require.cache[id].exports;
+  const path = require.resolve(moduleName);
+  if (require.cache[path]) {
+    return require.cache[path].exports;
   }
 
   const module = {
     exports: {},
-    path: id,
+    path,
   };
 
-  require.cache[id] = module;
+  require.cache[path] = module;
 
-  loadModule(id, module, require);
+  loadModule(path, module, require);
 
   return module.exports;
 };
