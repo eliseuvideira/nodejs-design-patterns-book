@@ -15,7 +15,7 @@ const inconsistentRead = (filename, cb) => {
 
 const consistentRead = (filename, cb) => {
   if (cache[filename]) {
-    setTimeout(() => cb(cache[filename]), 0);
+    process.nextTick(() => cb(cache[filename]), 0);
     return;
   }
   readFile(filename, "utf8", (err, data) => {
