@@ -12,9 +12,7 @@ const getPageLinks = (pageUrl, content) => {
   const url = new URL(pageUrl);
   const regex = new RegExp(url.origin + '[\\w#./:?]+', 'gi');
 
-  console.log({ pageUrl });
   const matches = content.match(regex);
-  console.log(matches, regex, url.href);
   return matches || [];
 };
 
